@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Rate, PlanType } from "@/types/rate";
-import { mockRates } from "@/lib/mockRates";
 
 // Average Georgia residential usage per month in therms.
 // Used to calculate the estimated monthly bill shown to users.
@@ -39,10 +38,10 @@ function ContractLabel({ months }: { months: number }) {
   return <span className="text-navy/50">{months}-month contract</span>;
 }
 
-export default function RateTable() {
+export default function RateTable({ rates }: { rates: Rate[] }) {
   const [filter, setFilter] = useState<Filter>("all");
 
-  const filtered = mockRates
+  const filtered = rates
     .filter((r) => filter === "all" || r.plan_type === filter)
     .sort((a, b) => estimatedMonthly(a) - estimatedMonthly(b));
 
@@ -80,7 +79,7 @@ export default function RateTable() {
       <div className="flex flex-col gap-3">
 
         {/* Desktop column headers */}
-        <div className="hidden md:grid md:grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 px-5 text-xs font-semibold uppercase tracking-wide text-navy/40">
+        <div className="hidden md:grid md:grid-cols-[2fr_1fr_1fr_1fr_120px] gap-4 px-5 text-xs font-semibold uppercase tracking-wide text-navy/40">
           <span>Provider &amp; Plan</span>
           <span>Rate / Therm</span>
           <span>Monthly Fee</span>
@@ -97,7 +96,7 @@ export default function RateTable() {
         {filtered.map((rate, index) => (
           <div
             key={rate.id}
-            className={`bg-white rounded-xl border p-5 flex flex-col md:grid md:grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 items-start md:items-center shadow-sm transition-shadow hover:shadow-md ${
+            className={`bg-white rounded-xl border p-5 flex flex-col md:grid md:grid-cols-[2fr_1fr_1fr_1fr_120px] gap-4 items-start md:items-center shadow-sm transition-shadow hover:shadow-md ${
               index === 0 ? "border-gold" : "border-navy/10"
             }`}
           >
