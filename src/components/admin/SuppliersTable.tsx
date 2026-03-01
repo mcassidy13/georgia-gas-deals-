@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { updateSupplier, toggleSupplierActive } from "@/app/admin/suppliers/actions";
+import { updateSupplier, toggleSupplierActive } from "@/app/admin/(panel)/suppliers/actions";
 
 type Supplier = {
   id: string;

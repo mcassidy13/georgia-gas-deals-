@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"/c/Users/14196/OneDrive/Desktop/Claude Projects/georgia-gas-deals\" && npx supabase init 2>&1)",
+      "Bash(cd \"/c/Users/14196/OneDrive/Desktop/Claude Projects/georgia-gas-deals\" && echo \"\" | npx supabase link --project-ref ylxqcmplzbtvsbfddbyo 2>&1)",
+      "Bash(cd \"/c/Users/14196/OneDrive/Desktop/Claude Projects/georgia-gas-deals\" && node -e \"\nconst { createClient } = require\\('@supabase/supabase-js'\\);\nconst supabase = createClient\\(\n  'https://ylxqcmplzbtvsbfddbyo.supabase.co',\n  'sb_publishable_pYrACYnd2ZhBTQEAQWPR3w_hQNqffT-'\n\\);\nasync function verify\\(\\) {\n  const tables = ['suppliers', 'plans', 'rate_alerts', 'blog_posts', 'rate_history', 'site_settings'];\n  for \\(const t of tables\\) {\n    const { data, error } = await supabase.from\\(t\\).select\\('*'\\).limit\\(1\\);\n    if \\(error\\) console.log\\(t + ': ERROR - ' + error.message\\);\n    else console.log\\(t + ': OK'\\);\n  }\n  const { data: suppliers, error } = await supabase.from\\('suppliers'\\).select\\('name'\\).order\\('id'\\);\n  if \\(error\\) console.log\\('suppliers fetch error:', error.message\\);\n  else console.log\\('Suppliers seeded:', suppliers.map\\(s => s.name\\).join\\(', '\\)\\);\n}\nverify\\(\\);\n\" 2>&1)",
+      "Bash(cd \"/c/Users/14196/OneDrive/Desktop/Claude Projects/georgia-gas-deals\" && npm install @supabase/ssr xlsx 2>&1)",
+      "Bash(cd:*)",
+      "Bash(head:*)",
+      "Bash(cd \"/c/Users/14196/OneDrive/Desktop/Claude Projects/georgia-gas-deals\" && rm -rf .next && npx tsc --noEmit 2>&1)",
+      "Bash(cd \"/c/Users/14196/OneDrive/Desktop/Claude Projects/georgia-gas-deals\" && npx tsc --noEmit 2>&1)"
+    ]
+  }
+}

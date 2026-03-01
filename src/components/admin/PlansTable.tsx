@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { updatePlan, togglePlanActive } from "@/app/admin/plans/actions";
+import { updatePlan, togglePlanActive } from "@/app/admin/(panel)/plans/actions";
 
 type Plan = {
   id: string;
