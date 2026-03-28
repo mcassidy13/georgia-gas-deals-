@@ -1,9 +1,19 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
-export default function ZipSearch() {
-  const [zip, setZip] = useState("");
+// Georgia zip code ranges:
+//   30001–31999  covers the vast majority of the state
+//   39813–39901  southwest Georgia (Bainbridge, Cairo, Camilla, etc.)
+function isGeorgiaZip(zip: string): boolean {
+  const n = parseInt(zip, 10);
+  return (n >= 30001 && n <= 31999) || (n >= 39813 && n <= 39901);
+}
+
+export default function ZipSearch({ initialZip = "" }: { initialZip?: string }) {
+  const router = useRouter();
+  const [zip, setZip] = useState(initialZip);
   const [error, setError] = useState("");
 
   function handleSubmit(e: FormEvent) {
@@ -13,8 +23,12 @@ export default function ZipSearch() {
       setError("Please enter a valid 5-digit zip code.");
       return;
     }
+    if (!isGeorgiaZip(cleaned)) {
+      setError("That zip code doesn't appear to be in Georgia. Georgia Gas Deals only covers GA.");
+      return;
+    }
     setError("");
-    document.getElementById("compare")?.scrollIntoView({ behavior: "smooth" });
+    router.push(`/?zip=${cleaned}#compare`);
   }
 
   return (

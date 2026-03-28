@@ -3,10 +3,16 @@ import HowItWorks from "@/components/HowItWorks";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import ZipSearch from "@/components/ZipSearch";
+import RateAlertForm from "@/components/RateAlertForm";
 import { getRates } from "@/lib/getRates";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { zip?: string };
+}) {
   const rates = await getRates();
+  const zip = searchParams.zip?.trim() || undefined;
 
   return (
     <>
@@ -42,7 +48,7 @@ export default async function Home() {
           </ul>
 
           {/* Zip search */}
-          <ZipSearch />
+          <ZipSearch initialZip={zip ?? ""} />
 
           {/* CTA */}
           <a
@@ -57,7 +63,26 @@ export default async function Home() {
 
       {/* Rate comparison table */}
       <section id="compare" className="bg-cream py-16 px-4">
-        <RateTable rates={rates} />
+        <RateTable rates={rates} zip={zip} />
+      </section>
+
+      {/* Rate Alert Signup */}
+      <section id="rate-alerts" className="bg-navy py-20 px-4">
+        <div className="max-w-xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="bg-gold/15 text-gold font-semibold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full">
+              Rate Alerts
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream mt-4 mb-3">
+              Get notified when rates drop
+            </h2>
+            <p className="text-cream/60 text-base">
+              Set your target rate and we&apos;ll email you the moment a Georgia
+              provider dips below it. Free, no account needed.
+            </p>
+          </div>
+          <RateAlertForm />
+        </div>
       </section>
 
       {/* How it works */}

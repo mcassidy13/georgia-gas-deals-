@@ -38,7 +38,7 @@ function ContractLabel({ months }: { months: number }) {
   return <span className="text-navy/50">{months}-month contract</span>;
 }
 
-export default function RateTable({ rates }: { rates: Rate[] }) {
+export default function RateTable({ rates, zip }: { rates: Rate[]; zip?: string }) {
   const [filter, setFilter] = useState<Filter>("all");
 
   const filtered = rates
@@ -51,7 +51,7 @@ export default function RateTable({ rates }: { rates: Rate[] }) {
       {/* Section header */}
       <div className="text-center flex flex-col gap-2">
         <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy">
-          Current Georgia Gas Rates
+          {zip ? `Gas Rates for ${zip}` : "Current Georgia Gas Rates"}
         </h2>
         <p className="text-navy/60 text-sm">
           Sorted by estimated monthly cost · Based on {AVG_THERMS} therms/month average usage

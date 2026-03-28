@@ -1,0 +1,19 @@
+provider,plan_name,plan_type,rate_per_therm,monthly_fee,contract_months,affiliate_url,badge
+Gas South,12-Month Fixed,fixed,0.469,5.99,12,#,Best Value
+Gas South,24-Month Fixed,fixed,0.489,5.99,24,#,
+Gas South,Month-to-Month,variable,0.529,5.99,0,#,
+Stream Energy,12-Month Fixed,fixed,0.479,4.99,12,#,
+Stream Energy,Variable Select,variable,0.549,0,0,#,
+True Natural Gas,12-Month Fixed,fixed,0.459,6.99,12,#,
+True Natural Gas,24-Month Fixed,fixed,0.479,6.99,24,#,
+SCANA Energy,12-Month Fixed,fixed,0.499,7.99,12,#,Most Popular
+SCANA Energy,Month-to-Month,variable,0.559,7.99,0,#,
+Constellation,12-Month Fixed,fixed,0.469,4.99,12,#,
+Constellation,24-Month Fixed,fixed,0.489,4.99,24,#,
+Fuel Georgia,12-Month Fixed,fixed,0.449,8.99,12,#,
+Fuel Georgia,6-Month Fixed,fixed,0.459,8.99,6,#,
+XOOM Energy,12-Month Fixed,fixed,0.499,0,12,#,
+XOOM Energy,Variable Select,variable,0.539,0,0,#,
+Walton EMC Natural Gas,12-Month Fixed,fixed,0.469,5.50,12,#,
+Town Square,12-Month Fixed,fixed,0.479,4.50,12,#,
+Town Square,Month-to-Month,variable,0.519,4.50,0,#,

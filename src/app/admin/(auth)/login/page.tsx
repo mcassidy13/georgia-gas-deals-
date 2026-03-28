@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { createSupabaseBrowser } from "@/lib/supabase-browser";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -25,8 +23,8 @@ export default function AdminLoginPage() {
       return;
     }
 
-    router.push("/admin/dashboard");
-    router.refresh();
+    // Hard navigation so the browser sends a fresh request with the new auth cookie.
+    window.location.href = "/admin/dashboard";
   }
 
   return (

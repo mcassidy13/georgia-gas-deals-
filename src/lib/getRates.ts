@@ -15,8 +15,13 @@ export async function getRates(): Promise<Rate[]> {
     .select("id, provider, plan_name, plan_type, rate_per_therm, monthly_fee, contract_months, affiliate_url, badge")
     .eq("active", true);
 
-  if (error || !data) {
-    console.error("Supabase fetch failed, falling back to mock data:", error?.message);
+  if (error) {
+    console.error("Supabase fetch failed, falling back to mock data:", error.message);
+    return mockRates;
+  }
+
+  // Fall back to mock data when no plans have been added to the DB yet.
+  if (!data || data.length === 0) {
     return mockRates;
   }
 
